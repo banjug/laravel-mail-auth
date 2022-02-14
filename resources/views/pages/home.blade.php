@@ -71,6 +71,14 @@
                     </form>
                 </div>
             </div>
+        @else
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <p>
+                    Go to <a href="{{route('games')}}">Games</a>.
+                </p>
+            </div>
+        </div>
         @endguest
     </main>
 @endsection
