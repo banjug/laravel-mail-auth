@@ -20,6 +20,7 @@
             };
         },
         mounted() {
+            // chiamata api alla rotta api.games.list per ricevere i dati dei videogames tramite l'ApiController
             axios.get('/api/games/list')
             .then(r=>this.videogames = r.data)
             .catch(e=>console.log(e))

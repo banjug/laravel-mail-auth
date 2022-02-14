@@ -25,8 +25,8 @@ Route::post('/register', 'Auth\RegisterController@register')->name('register');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
-
-Route::middleware('auth')->prefix('/games')->group(function() { //posso aggiungere ->prefix('posts') siccome le rotte sono raggruppate e aggiunge /posts prima di ogni url
+// rotte delle pagine dei videogiochi
+Route::middleware('auth')->prefix('/games')->group(function() { //posso aggiungere ->prefix('games') siccome le rotte sono raggruppate e aggiunge /games prima di ogni url
     Route::get('/', 'GamesController@games')->name('games');   
 });
 

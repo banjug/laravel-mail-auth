@@ -1964,6 +1964,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    // chiamata api alla rotta api.games.list per ricevere i dati dei videogames tramite l'ApiController
     axios.get('/api/games/list').then(function (r) {
       return _this.videogames = r.data;
     })["catch"](function (e) {
