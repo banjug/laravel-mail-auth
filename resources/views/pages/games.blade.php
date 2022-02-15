@@ -1,6 +1,8 @@
 @extends('layouts.main-layout')
 @section('content')
     <main id="app">
-        <games-component></games-component>
+        @auth
+            	<games-component></games-component>
+        @endauth
     </main>
 @endsection

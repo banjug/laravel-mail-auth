@@ -1955,18 +1955,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       videogames: []
     };
   },
+  methods: {
+    gameDelete: function gameDelete(id) {
+      var _this = this;
+
+      axios.get("api/games/delete/".concat(id)).then(function (r) {
+        // trovo la posizione dell'elemento che voglio eliminare con la funzione trova id e faccio lo splice nell'array
+        var index = _this.getIndexById(id);
+
+        _this.videogames.splice(index, 1);
+      })["catch"](function (e) {
+        return console.log(e);
+      });
+    },
+    getIndexById: function getIndexById(id) {
+      // funzione che ritrova la posizione nell'array di videogiochi a seconda dell'id input
+      for (var i = 0; i < this.videogames.length; i++) {
+        var videogame = this.videogames[i];
+
+        if (videogame.id == id) {
+          return i;
+        }
+      }
+
+      return -1;
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     // chiamata api alla rotta api.games.list per ricevere i dati dei videogames tramite l'ApiController
     axios.get('/api/games/list').then(function (r) {
-      return _this.videogames = r.data;
+      return _this2.videogames = r.data;
     })["catch"](function (e) {
       return console.log(e);
     });
@@ -37620,6 +37652,21 @@ var render = function () {
             _c("p", [_vm._v(_vm._s(videogame.subtitle))]),
             _vm._v(" "),
             _c("small", [_vm._v("Rating: " + _vm._s(videogame.rating) + "/5")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row justify-content-end" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-danger btn-sm m-3",
+                  on: {
+                    click: function ($event) {
+                      return _vm.gameDelete(videogame.id)
+                    },
+                  },
+                },
+                [_vm._v("DELETE")]
+              ),
+            ]),
           ])
         }),
         0

@@ -32,3 +32,4 @@ Route::middleware('auth')->prefix('/games')->group(function() { //posso aggiunge
 
 // rotte api per passare dati a VUE
 Route::get('/api/games/list', 'ApiController@getGames')->name('api.games.list');
+Route::get('/api/games/delete/{id}', 'ApiController@deleteGames')->name('api.games.delete');
